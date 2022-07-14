@@ -1,3 +1,4 @@
+#name of the workflow
 name: CI/CD
 
 on:
