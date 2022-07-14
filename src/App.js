@@ -8,7 +8,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-           Hi Shashi, Welcome to Hexaware world..Edit <code>src/App.js</code> and save to reload.
+           Hi Shashi, Welcome to Hexaware world..
+           Please edit <code>src/App.js</code> and save to reload.
         </p>
         <a
           className="App-link"
