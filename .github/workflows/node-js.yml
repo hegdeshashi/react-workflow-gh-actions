@@ -43,14 +43,20 @@ jobs:
     - name: Build
       run: npm run build
 
-  spectralscan:
+  sonarscan:
     runs-on: ubuntu-latest
     needs: build
-    name: spectral scan
+    name: sonar scan
+    steps:
+    - name: SonarQube Scan
+      uses: monstar-lab-oss/sonarqube-github-action@v1.0.1
+      with:
+        url: ${{ secrets.SONARQUBE_HOST }}
+        token: ${{ secrets.SONARQUBE_TOKEN }}
   
   securityscan:
     runs-on: ubuntu-latest
-    needs: spectralscan
+    needs: sonarscan
     name: securty scan 
     steps:
     - name: Checkout the code
