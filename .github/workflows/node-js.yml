@@ -37,11 +37,8 @@ jobs:
     - name: Build
       run: npm run build
      
-     #SonarScan
-    - name: SonarScan
-      #run: npm run build
+
       
-     #SpectralScan 
-    - name: SpectralScan
-      #run: npm run build
-      
+  SonarScan:
+    name: SonarScan
+    runs-on: ubuntu-latest
