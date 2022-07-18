@@ -37,3 +37,13 @@ jobs:
     - name: Build
       run: npm run build
 
+
+      # SonarScan
+    - name: SonarScan
+      run: sonar-scanner
+
+
+      # SpectralScan
+    - name: SpectralScan
+      #run: 
+
