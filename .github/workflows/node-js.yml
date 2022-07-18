@@ -39,10 +39,15 @@ jobs:
       
   SonarScan:
     runs-on: ubuntu-latest
+    steps:
+    - name: SonarScan
       
   SpectralScan:
     runs-on: ubuntu-latest
-      
+    steps:
+    - name: SpectralScan
+  
   Deploy:
     runs-on: ubuntu-latest
- 
+    steps:
+    - name: Deploy
