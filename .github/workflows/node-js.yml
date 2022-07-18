@@ -33,14 +33,11 @@ jobs:
     - name: Install dependencies
       run: npm install
       
-    # SonarScan
-    - name: SonarScan
-      run: sonar-scanner
+    - name: Run the tests and generate coverage report
+      run: npm test -- --coverage
 
-
-    # SpectralScan
-    - name: SpectralScan
-      #run: 
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
       
       # Build
     - name: Build
