@@ -1,0 +1,38 @@
+#name of the workflow
+name: My First Manual Workflow
+on: 
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    # set node.js 
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}  
+      
+    # Cache dependency  
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: |
+          **/node_modules
+        key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+        
+    # Install dependencies    
+    - name: Install dependencies
+      run: npm install
+      
+      # Build
+    - name: Build
+      run: npm run build
