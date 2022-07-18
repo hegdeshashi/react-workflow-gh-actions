@@ -1,5 +1,5 @@
 #name of the workflow
-name: My First Manual Workflow
+name: My second Manual Workflow
 on: 
   workflow_dispatch:
 
