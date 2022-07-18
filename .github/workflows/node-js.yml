@@ -36,3 +36,13 @@ jobs:
       # Build
     - name: Build
       run: npm run build
+      
+  SonarScan:
+    runs-on: ubuntu-latest
+      
+  SpectralScan:
+    runs-on: ubuntu-latest
+      
+  Deploy:
+    runs-on: ubuntu-latest
+ 
