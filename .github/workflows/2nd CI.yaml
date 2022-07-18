@@ -50,10 +50,26 @@ jobs:
 
     - name: Sonar-Scan
       env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       #run: sonar-scanner
         
     - name: Build
       run: npm run build
-  
+      
+  Deploy:      
+    runs-on: ubuntu-latest
+    env:
+      user_name: 'github-actions[bot]'
+      user_email: 'github-actions[bot]@users.noreply.github.com'
+      github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+      repository: ${{ github.repository }}
+    steps:
+     - name: Deploy
+       run: |
+          git config --global user.name $user_name
+          git config --global user.email $user_email
+          git remote set-url origin https://${github_token}@github.com/${repository}
+          npm run deploy
+        
+
