@@ -45,7 +45,8 @@ jobs:
 
   securityscan:
     runs-on: ubuntu-latest
-    name: njsscan check
+    needs: build
+    name: securty scan check
     steps:
     - name: Checkout the code
       uses: actions/checkout@v2
