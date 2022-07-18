@@ -43,10 +43,11 @@ jobs:
     - name: Build
       run: npm run build
 
+  
   securityscan:
     runs-on: ubuntu-latest
     needs: build
-    name: securty scan check
+    name: securty scan 
     steps:
     - name: Checkout the code
       uses: actions/checkout@v2
