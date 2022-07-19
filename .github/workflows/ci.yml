@@ -1,11 +1,8 @@
 #name of the workflow
 name: CI/CD
+on: 
+  workflow_dispatch:
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
