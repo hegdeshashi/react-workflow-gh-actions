@@ -67,13 +67,10 @@ jobs:
       with:
         args: '.'
   
-  UploadArtifactory:
-    needs: securityscan
-    runs-on: ubuntu-latest
-        
+       
   Deploy:
     runs-on: ubuntu-latest
-    needs: UploadArtifactory
+    needs: securityscan
     env:
       user_name: 'github-actions[bot]'
       user_email: 'github-actions[bot]@users.noreply.github.com'
