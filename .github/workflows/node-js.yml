@@ -77,10 +77,10 @@ jobs:
     #  github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
     #  repository: ${{ github.repository }}
     steps:
-      - uses: hegdeshashi/manual-approval@v1
-        with:
-          secret: ${{ github_token }}
-          approvers: hegdeshashi    
+      #- uses: hegdeshashi/manual-approval@v1
+      #  with:
+      #    secret: ${{ github_token }}
+      #    approvers: hegdeshashi    
       - name: deploy
         run: |
           git config --global user.name $user_name
