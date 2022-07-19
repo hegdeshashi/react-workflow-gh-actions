@@ -67,7 +67,7 @@ jobs:
       with:
         args: '.'
   
-  #Deployment     
+  #Deploy     
   Deploy:
     runs-on: ubuntu-latest
     needs: securityscan
