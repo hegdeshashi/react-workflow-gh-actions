@@ -68,7 +68,6 @@ jobs:
         args: '.'
   
   UploadArtifactory:
-    name: uploading to artifactory
     needs: securityscan
     runs-on: ubuntu-latest
         
