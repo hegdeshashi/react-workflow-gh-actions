@@ -77,10 +77,10 @@ jobs:
     #  github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
     #  repository: ${{ github.repository }}
     steps:
-      - uses: hegdeshashi/manual-approval@v1
-        with:
-          secret: ${{ ACTIONS_DEPLOY_ACCESS_TOKEN }}
-          approvers: hegdeshashi    
+      #- uses: hegdeshashi/manual-approval@v1
+      #  with:
+      #    secret: ${{ ACTIONS_DEPLOY_ACCESS_TOKEN }}
+      #    approvers: hegdeshashi    
       - name: deploy
         run: |
           git config --global user.name $user_name
@@ -92,4 +92,4 @@ jobs:
       user_email: 'github-actions[bot]@users.noreply.github.com'
       github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
       repository: ${{ github.repository }}
-
+#https://medium.com/@ljmocic/deploying-react-application-to-aws-s3-using-github-actions-85addacaeace
