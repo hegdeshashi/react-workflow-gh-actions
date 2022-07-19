@@ -70,7 +70,6 @@ jobs:
   Deploy:
       runs-on: ubuntu-latest
       needs: securityscan
-      name: deploy 
       steps:
         - name: deploy
           run: |
