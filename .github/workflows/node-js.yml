@@ -73,7 +73,7 @@ jobs:
     steps:
       - uses: hegdeshashi/manual-approval@v1
         with:
-          secret: ${{ github.TOKEN }}
+          secret: ${{ github_token }}
           approvers: hegdeshashi    
       - name: deploy
         run: |
