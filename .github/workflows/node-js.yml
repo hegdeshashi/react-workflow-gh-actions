@@ -67,8 +67,8 @@ jobs:
       with:
         args: '.'
   
-  #Deploy     
-  Deploy:
+  #Deploy to Prod
+  Prod:
     runs-on: ubuntu-latest
     needs: securityscan
     #env:
