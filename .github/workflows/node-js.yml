@@ -73,9 +73,9 @@ jobs:
     steps:
       - name: Share artifact inside workflow
         uses: actions/upload-artifact@v1
-        #with:
-         # name: react-workflow-gh-actions
-          #path: build
+        with:
+         name: react-workflow-gh-actions
+         path: |
         
   #Deploy to Prod
   Prod:
