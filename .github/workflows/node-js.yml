@@ -66,11 +66,21 @@ jobs:
       uses: ajinabraham/njsscan-action@master
       with:
         args: '.'
-  
+  # Share artifact inside workflow
+  artifact:
+    runs-on: ubuntu-latest
+    needs: securityscan
+    steps:
+      - name: Share artifact inside workflow
+        uses: actions/upload-artifact@v1
+        with:
+          name: react-github-actions-build
+          path: build
+        
   #Deploy to Prod
   Prod:
     runs-on: ubuntu-latest
-    needs: securityscan
+    needs: artifact
     #env:
     #  user_name: 'github-actions[bot]'
     #  user_email: 'github-actions[bot]@users.noreply.github.com'
