@@ -60,53 +60,10 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: 'us-east-1'   # optional: defaults to us-east-1  
     #- uses: aws-actions/configure-aws-credentials@v1
+    - name: Get timestamp
+      id: timestamp
+      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S-%3NZ')"  
+           
     - name: Deploy to S3
-     # if: github.ref == 'refs/heads/master'
       run: aws s3 sync s3://devopsanalyticsartifacts/public/ s3://upload-githubaction-data/public/
-     # env:
-        #AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-        #AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        #AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        #AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1  
-        #AWS_EC2_METADATA_DISABLED: true
-    
-    
-  #Dev:
-    # The type of runner that the job will run on
-  #  runs-on: ubuntu-latest
-  #  environment: Dev
-  #  needs: artifact
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-  #  steps:
-  #  - uses: actions/checkout@v2
-    # Runs a single command using the runners shell
-  #  - name: Deploying to S3 bucket
-  #    run: echo "hello in Dev env"
-
-  
-  #QA:
-    # The type of runner that the job will run on
-  #  runs-on: ubuntu-latest
-  #  environment: QA
-  #  needs: Dev
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-  #  steps:
-  #  - uses: actions/checkout@v2
-    # Runs a single command using the runners shell
-  #  - name: Send greeting
-  #    run: echo "Hello .. I am in QA env"  
-  
-  #Prod:
-    # The type of runner that the job will run on
-  #  runs-on: ubuntu-latest
-  #  environment: Prod
-  #  needs: QA
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-  #  steps:
-  #  - uses: actions/checkout@v2
-    # Runs a single command using the runners shell
-  #  - name: Send greeting
-  #    run: echo "Hello .. I am in Prod env"  
+     
