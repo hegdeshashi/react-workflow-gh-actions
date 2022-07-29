@@ -62,7 +62,7 @@ jobs:
     #- uses: aws-actions/configure-aws-credentials@v1
     - name: Get timestamp
       id: timestamp
-      run: echo "::set-output name=date:Asia/India$(date +'%Y-%m-%dT%H-%M-%S-%3S'+5:30)"  
+      run: echo "::set-output name=date:Asia/Calcutta$(date +'%Y-%m-%dT%H-%M-%S-%3S')"  
       
            
     - name: Deploy to S3
