@@ -62,7 +62,7 @@ jobs:
     #- uses: aws-actions/configure-aws-credentials@v1
     - name: Get timestamp
       id: timestamp
-      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S-%3NZ')"  
+      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S-%3IST')"  
            
     - name: Deploy to S3
       run: aws s3 sync s3://devopsanalyticsartifacts/public/ s3://upload-githubaction-data/public/"${{ steps.timestamp.outputs.date }}"
