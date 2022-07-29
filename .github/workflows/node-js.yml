@@ -62,7 +62,7 @@ jobs:
     #- uses: aws-actions/configure-aws-credentials@v1
     - name: Get timestamp
       id: timestamp
-      run: echo "::set-output name=date::$((date +%Z) +'%Y-%m-%dT%H-%M-%S-%3S')"  
+      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S-%3S')"  
       
            
     - name: Deploy to S3
