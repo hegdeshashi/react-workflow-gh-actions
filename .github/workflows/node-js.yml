@@ -56,13 +56,7 @@ jobs:
       id: timestamp
       run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S-%3NZ')" 
       
-    - name: Generate package
-      uses: thedoctor0/zip-release@master
-      with:
-        filename: 'package.zip'
-        exclusions: '*.git* /*node_modules/* /*test/* *.md'
- 
-    
+   
     - name: Upload to S3
     #  uses: aws-actions/configure-aws-credentials@v1
       uses: jakejarvis/s3-sync-action@master
@@ -74,7 +68,14 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1  
         SOURCE_DIR: 'build'      # optional: defaults to entire repository
-        
+      
+    - name: Generate package
+      uses: thedoctor0/zip-release@master
+      with:
+        filename: 'package.zip'
+        exclusions: '*.git* /*node_modules/* /*test/* *.md'
+ 
+    
     
     
 
