@@ -55,7 +55,7 @@ jobs:
     - name: Generate package
       uses: thedoctor0/zip-release@master
       with:
-        filename: 'package.zip'
+        filename: '"${{ steps.timestamp.outputs.date }}"package.zip'
         exclusions: '*.git* /*node_modules/* /*test/* *.md'
     - name: Current timestamp
       id: timestamp
