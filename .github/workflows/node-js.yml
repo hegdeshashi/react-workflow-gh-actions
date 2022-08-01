@@ -59,7 +59,7 @@ jobs:
     - name: Generate package
       uses: thedoctor0/zip-release@master
       with:
-        filename: '"${{ steps.timestamp.outputs.date }}"package.zip'
+        filename: 'package.zip'
         exclusions: '*.git* /*node_modules/* /*test/* *.md'
  
     
