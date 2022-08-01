@@ -52,7 +52,9 @@ jobs:
     #- name: Send greeting
     #  run: echo "Hello .. I am in artifact"  
     #- uses: actions/checkout@master
-
+    - name: Current timestamp
+      id: timestamp
+      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S-%3NZ')" 
       
    
     - name: Upload to S3
@@ -65,10 +67,8 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1  
-        SOURCE_DIR: 'build'      # optional: defaults to entire repository
-    - name: Current timestamp
-      id: timestamp
-      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S-%3NZ')" 
+        #SOURCE_DIR: 'build'      # optional: defaults to entire repository
+        SOURCE_DIR: '"${{ steps.timestamp.outputs.date }}"'
       
     - name: Generate package
       uses: thedoctor0/zip-release@master
