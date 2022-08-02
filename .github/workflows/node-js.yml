@@ -84,10 +84,11 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-     - uses: actions/checkout@v2
+    # - uses: actions/checkout@v2
+     - uses: jakejarvis/s3-sync-action@master
     # Runs a single command using the runners shell
      - name: Deploy to Prod
-       run: aws s3 sync s3://upload-githubaction-data/public/ s3://devopsanalyticsartifacts/public/  
+       run: aws s3 sync s3://upload-githubaction-data/ s3://devopsanalyticsartifacts/ 
     
     
 
