@@ -88,7 +88,7 @@ jobs:
      - uses: jakejarvis/s3-sync-action@master
     # Runs a single command using the runners shell
      - name: Deploy to Prod
-       run: aws s3 sync s3://${{ secrets.AWS_S3_BUCKET }}/ s3://devopsanalyticsartifacts/ 
+       run: aws s3 sync s3://${{ secrets.AWS_S3_BUCKET }}/public s3://${{ secrets.AWS_S3_BUCKET }}/build
     
     
 
