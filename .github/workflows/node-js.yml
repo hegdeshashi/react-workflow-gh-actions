@@ -76,8 +76,8 @@ jobs:
         filename: 'package.zip'
         exclusions: '*.git* /*node_modules/* /*test/* *.md'
  
-    - name: Copy to S3   
-      run: aws s3 cp s3://AWS_S3_BUCKET/ s3://AWS_S3_BUCKET_PROD/
+#    - name: Copy to S3   
+#      run: aws s3 cp s3://AWS_S3_BUCKET/ s3://AWS_S3_BUCKET_PROD/
     
     
 
