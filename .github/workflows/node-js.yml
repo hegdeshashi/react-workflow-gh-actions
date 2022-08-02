@@ -88,8 +88,18 @@ jobs:
      - uses: jakejarvis/s3-sync-action@master
     # Runs a single command using the runners shell
      - name: Deploy to Prod
+       uses: jakejarvis/s3-sync-action@master
+      #with:
+       # args: --acl public-read --follow-symlinks --delete
+       env:
+         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+         AWS_S3_BUCKET_PROD: ${{ secrets.AWS_S3_BUCKET_PROD }}
+         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1  
+         SOURCE_DIR: 'build'      # optional: defaults to entire repository
     #   run: aws s3 sync s3://${{ secrets.AWS_S3_BUCKET }}/ s3://${{ secrets.AWS_S3_BUCKET }}/shashi
-       run: aws s3 cp s3://${{ secrets.AWS_S3_BUCKET }}/ s3://${{ secrets.AWS_S3_BUCKET_PROD }}/
+         run: aws s3 cp s3://$AWS_S3_BUCKET/ s3://$AWS_S3_BUCKET_PROD/
     
     
 
