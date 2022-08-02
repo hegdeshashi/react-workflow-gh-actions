@@ -86,8 +86,8 @@ jobs:
     steps:
      - uses: actions/checkout@v2
     # Runs a single command using the runners shell
-     - name: Send greeting
-       run: echo "Hello .. I am in Prod env"     
+     - name: Deploy to Prod
+       run: aws s3 sync s3://upload-githubaction-data/public/ s3://devopsanalyticsartifacts/public/  
     
     
 
