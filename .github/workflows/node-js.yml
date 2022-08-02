@@ -99,7 +99,8 @@ jobs:
          AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1  
          #SOURCE_DIR: 'build'      # optional: defaults to entire repository
     #   run: aws s3 sync s3://${{ secrets.AWS_S3_BUCKET }}/ s3://${{ secrets.AWS_S3_BUCKET }}/shashi
-         run: aws s3 cp s3://AWS_S3_BUCKET/ s3://AWS_S3_BUCKET_PROD/
+     - name: Copy S3   
+       run: aws s3 cp s3://AWS_S3_BUCKET/ s3://AWS_S3_BUCKET_PROD/
     
     
 
