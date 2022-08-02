@@ -70,16 +70,19 @@ jobs:
         SOURCE_DIR: 'build'      # optional: defaults to entire repository
      
       
-    - name: Generate package
-      uses: thedoctor0/zip-release@master
-      with:
-        filename: 'package.zip'
-        exclusions: '*.git* /*node_modules/* /*test/* *.md'
- 
-#    - name: Copy to S3   
-#      run: aws s3 cp s3://AWS_S3_BUCKET/ s3://AWS_S3_BUCKET_PROD/
-    
-    
+    - name: Make artifact directory
+      run: mkdir -p ./artifacts/${{ github.repository }}
 
-      
-    
+    - name: Create Zip File
+      uses: montudor/action-zip@v0.1.0
+      with:
+        args: zip -r ./artifacts/${{ github.repository }}/${{ github.sha }}.zip ./src
+
+    - name: Push Zip to S3
+      uses: jakejarvis/s3-sync-action@v0.3.1
+      env:
+        SOURCE_DIR: './artifacts'
+        AWS_REGION: 'us-east-1'
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
